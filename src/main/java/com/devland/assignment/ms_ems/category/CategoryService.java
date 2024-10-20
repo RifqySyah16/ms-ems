@@ -37,7 +37,7 @@ public class CategoryService {
         return this.categoryRepository.save(newCategory);
     }
 
-    public Category updated(Category updatedCategory) {
+    public Category update(Category updatedCategory) {
         Category existinCategory = this.getOne(updatedCategory.getId());
         updatedCategory.setId(existinCategory.getId());
 

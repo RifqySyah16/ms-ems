@@ -50,8 +50,8 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponseDTO> getOne(@PathVariable("id") Long id) {
-        Category existinCategory = this.categoryService.getOne(id);
-        CategoryResponseDTO categoryResponseDTO = existinCategory.convertToResponse();
+        Category existingCategory = this.categoryService.getOne(id);
+        CategoryResponseDTO categoryResponseDTO = existingCategory.convertToResponse();
 
         return ResponseEntity.ok(categoryResponseDTO);
     }
@@ -71,7 +71,7 @@ public class CategoryController {
             @RequestBody CategoryRequestDTO categoryRequestDTO) {
         Category updatedCategory = categoryRequestDTO.convertToEntity();
         updatedCategory.setId(id);
-        Category savedCategory = this.categoryService.updated(updatedCategory);
+        Category savedCategory = this.categoryService.update(updatedCategory);
         CategoryResponseDTO categoryResponseDTO = savedCategory.convertToResponse();
 
         return ResponseEntity.ok(categoryResponseDTO);

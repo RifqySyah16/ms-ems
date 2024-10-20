@@ -57,6 +57,14 @@ public class EventManagementController {
         return ResponseEntity.ok(eventManagementResponseDTO);
     }
 
+    @GetMapping("/remaining-capacity/{id}")
+    public ResponseEntity<Integer> getRemainingCapacity(@PathVariable("id") Long id) {
+        EventManagement existingEventManagement = this.eventManagementService.getOne(id);
+        int remainingCapacity = existingEventManagement.getRemainingCapacity();
+
+        return ResponseEntity.ok(remainingCapacity);
+    }
+
     @PostMapping
     public ResponseEntity<EventManagementResponseDTO> create(
             @RequestBody @Valid EventManagementRequestDTO eventManagementRequestDTO) {

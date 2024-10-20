@@ -88,4 +88,8 @@ public class EventManagement {
                 .tagResponseDTOs(tagResponseDTOs)
                 .build();
     }
+
+    public int getRemainingCapacity() {
+        return this.capacity - this.attendees.size();
+    }
 }
