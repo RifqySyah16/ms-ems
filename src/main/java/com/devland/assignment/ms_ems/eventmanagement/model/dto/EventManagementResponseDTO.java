@@ -1,6 +1,6 @@
 package com.devland.assignment.ms_ems.eventmanagement.model.dto;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.devland.assignment.ms_ems.admin.model.dto.AdminResponseDTO;
@@ -24,8 +24,8 @@ public class EventManagementResponseDTO {
     private String description;
     private String location;
     private int capacity;
-    private LocalDateTime eventStart;
-    private LocalDateTime eventEnd;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
     private AdminResponseDTO adminResponseDTOn;
     private CategoryResponseDTO categoryResponseDTO;
     private List<TagResponseDTO> tagResponseDTOs;

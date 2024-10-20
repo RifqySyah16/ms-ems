@@ -1,7 +1,10 @@
 package com.devland.assignment.ms_ems.eventmanagement.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.devland.assignment.ms_ems.admin.model.Admin;
 import com.devland.assignment.ms_ems.admin.model.dto.AdminResponseDTO;
@@ -46,9 +49,11 @@ public class EventManagement {
 
     private int capacity;
 
-    private LocalDateTime eventStart;
+    @CreationTimestamp
+    private Timestamp cretaedAt;
 
-    private LocalDateTime eventEnd;
+    @UpdateTimestamp
+    private Timestamp updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "admin_id")
@@ -76,8 +81,8 @@ public class EventManagement {
                 .description(this.description)
                 .location(this.location)
                 .capacity(this.capacity)
-                .eventStart(this.eventStart)
-                .eventEnd(this.eventEnd)
+                .createdAt(this.updatedAt)
+                .updatedAt(this.updatedAt)
                 .adminResponseDTOn(adminResponseDTO)
                 .categoryResponseDTO(categoryResponseDTO)
                 .tagResponseDTOs(tagResponseDTOs)
