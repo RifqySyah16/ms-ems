@@ -2,7 +2,7 @@ package com.devland.assignment.ms_ems.attendee.model.dto;
 
 import com.devland.assignment.ms_ems.attendee.model.Attendee;
 import com.devland.assignment.ms_ems.eventmanagement.model.EventManagement;
-import com.devland.assignment.ms_ems.eventmanagement.model.dto.EventManagementRequestDTO;
+import com.devland.assignment.ms_ems.eventmanagement.model.dto.EventAttendeeRequestDTO;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -25,10 +25,10 @@ public class AttendeeRequestDTO {
     private String address;
 
     @Valid
-    private EventManagementRequestDTO eventManagementRequestDTO;
+    private EventAttendeeRequestDTO eventAttendeeRequestDTO;
 
     public Attendee convertToEntity() {
-        EventManagement eventManagement = this.eventManagementRequestDTO.convertToEntity();
+        EventManagement eventManagement = this.eventAttendeeRequestDTO.convertToEntity();
 
         return Attendee.builder()
                 .id(this.id)

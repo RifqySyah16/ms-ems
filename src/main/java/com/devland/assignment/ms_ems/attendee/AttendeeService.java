@@ -38,12 +38,14 @@ public class AttendeeService {
         }
 
         EventManagement existingEventManagement = this.eventManagementService
-                .getOne(newAttendee.getEventManagement().getId());  
+                .getOne(newAttendee.getEventManagement().getId());
         this.capacityValidator(existingEventManagement);
         newAttendee.setEventManagement(existingEventManagement);
-        
+        Attendee savedAttendee = this.attendeeRepository.save(newAttendee);
+        existingEventManagement.getAttendees().add(savedAttendee);
+        this.eventManagementService.update(existingEventManagement);
 
-        return this.attendeeRepository.save(newAttendee);
+        return savedAttendee;
     }
 
     public Attendee update(Attendee updatedAttendee) {
@@ -64,4 +66,5 @@ public class AttendeeService {
             throw new EventCapacityExceededException("Event capacity exceeded");
         }
     }
+
 }

@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("event-managements")
+@RequestMapping("/event-managements")
 public class EventManagementController {
     private final EventManagementService eventManagementService;
 
@@ -55,14 +55,6 @@ public class EventManagementController {
         EventManagementResponseDTO eventManagementResponseDTO = existingEventManagement.convertToResponse();
 
         return ResponseEntity.ok(eventManagementResponseDTO);
-    }
-
-    @GetMapping("/remaining-capacity/{id}")
-    public ResponseEntity<Integer> getRemainingCapacity(@PathVariable("id") Long id) {
-        EventManagement existingEventManagement = this.eventManagementService.getOne(id);
-        int remainingCapacity = existingEventManagement.getRemainingCapacity();
-
-        return ResponseEntity.ok(remainingCapacity);
     }
 
     @PostMapping

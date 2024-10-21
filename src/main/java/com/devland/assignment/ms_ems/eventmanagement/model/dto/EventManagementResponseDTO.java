@@ -26,7 +26,7 @@ public class EventManagementResponseDTO {
     private int capacity;
     private Timestamp createdAt;
     private Timestamp updatedAt;
-    private AdminResponseDTO adminResponseDTOn;
+    private AdminResponseDTO adminResponseDTO;
     private CategoryResponseDTO categoryResponseDTO;
     private List<TagResponseDTO> tagResponseDTOs;
 }

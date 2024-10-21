@@ -2,11 +2,13 @@ package com.devland.assignment.ms_ems.eventmanagement.model.dto;
 
 import java.util.List;
 
+import com.devland.assignment.ms_ems.admin.model.Admin;
+import com.devland.assignment.ms_ems.admin.model.dto.AdminEventRequestDTO;
 import com.devland.assignment.ms_ems.category.model.Category;
-import com.devland.assignment.ms_ems.category.model.dto.CategoryRequestDTO;
+import com.devland.assignment.ms_ems.category.model.dto.CategoryEventRequestDTO;
 import com.devland.assignment.ms_ems.eventmanagement.model.EventManagement;
 import com.devland.assignment.ms_ems.tag.model.Tag;
-import com.devland.assignment.ms_ems.tag.model.dto.TagRequestDTO;
+import com.devland.assignment.ms_ems.tag.model.dto.TagEventRequestDTO;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -36,14 +38,18 @@ public class EventManagementRequestDTO {
     private int capacity;
 
     @Valid
-    private CategoryRequestDTO categoryRequestDTO;
+    private AdminEventRequestDTO adminEventRequestDTO;
 
     @Valid
-    private List<TagRequestDTO> tagRequestDTOs;
+    private CategoryEventRequestDTO categoryEventRequestDTO;
+
+    @Valid
+    private List<TagEventRequestDTO> tagEventRequestDTOs;
 
     public EventManagement convertToEntity() {
-        Category category = this.categoryRequestDTO.convertToEntity();
-        List<Tag> tags = this.tagRequestDTOs.stream().map(TagRequestDTO::convertToEntity).toList();
+        Admin admin = this.adminEventRequestDTO.convertToEntity();
+        Category category = this.categoryEventRequestDTO.convertToEntity();
+        List<Tag> tags = this.tagEventRequestDTOs.stream().map(TagEventRequestDTO::converttoEntity).toList();
 
         return EventManagement.builder()
                 .id(this.id)
@@ -51,6 +57,7 @@ public class EventManagementRequestDTO {
                 .description(this.description)
                 .location(this.location)
                 .capacity(this.capacity)
+                .admin(admin)
                 .category(category)
                 .tags(tags)
                 .build();

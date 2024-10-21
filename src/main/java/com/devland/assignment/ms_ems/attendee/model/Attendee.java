@@ -32,7 +32,7 @@ public class Attendee {
     private String address;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
+    @JoinColumn(name = "event_management_id")
     private EventManagement eventManagement;
 
     public AttendeeResponseDTO convertToResponse() {

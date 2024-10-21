@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
-@RequestMapping("tags")
+@RequestMapping("/tags")
 @RequiredArgsConstructor
 public class TagController {
     private final TagService tagService;

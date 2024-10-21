@@ -63,10 +63,10 @@ public class WebSecurityConfigurer {
                                                                                 "/error")
                                                                 .permitAll()
                                                                 .requestMatchers(HttpMethod.GET, "/admins",
-                                                                                "/admins/**", "/attendee",
-                                                                                "/attendee/**", "/category",
-                                                                                "/category/**", "/tag",
-                                                                                "/tag/**", "/event-managements",
+                                                                                "/admins/**", "/attendees",
+                                                                                "/attendees/**", "/categories",
+                                                                                "/categories/**", "/tags",
+                                                                                "/tags/**", "/event-managements",
                                                                                 "/event-managemnets/**")
                                                                 .permitAll()
                                                                 .anyRequest()

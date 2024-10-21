@@ -7,6 +7,7 @@ import com.devland.assignment.ms_ems.attendee.model.Attendee;
 import com.devland.assignment.ms_ems.attendee.model.dto.AttendeeRequestDTO;
 import com.devland.assignment.ms_ems.attendee.model.dto.AttendeeResponseDTO;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
@@ -56,7 +57,7 @@ public class AttendeeController {
     }
 
     @PostMapping
-    public ResponseEntity<AttendeeResponseDTO> create(@RequestBody AttendeeRequestDTO attendeeRequestDTO) {
+    public ResponseEntity<AttendeeResponseDTO> create(@RequestBody @Valid AttendeeRequestDTO attendeeRequestDTO) {
         Attendee newAttendee = attendeeRequestDTO.convertToEntity();
 
         Attendee savAttendee = this.attendeeService.create(newAttendee);
@@ -76,7 +77,7 @@ public class AttendeeController {
         return ResponseEntity.ok(attendeeResponseDTO);
     }
 
-    @DeleteMapping("id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         this.attendeeService.delete(id);
 

@@ -15,6 +15,7 @@ import com.devland.assignment.ms_ems.eventmanagement.model.dto.EventManagementRe
 import com.devland.assignment.ms_ems.tag.model.Tag;
 import com.devland.assignment.ms_ems.tag.model.dto.TagResponseDTO;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -59,7 +60,7 @@ public class EventManagement {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "eventManagement", cascade = CascadeType.ALL)
     private List<Attendee> attendees;
 
     @ManyToOne
@@ -83,13 +84,9 @@ public class EventManagement {
                 .capacity(this.capacity)
                 .createdAt(this.updatedAt)
                 .updatedAt(this.updatedAt)
-                .adminResponseDTOn(adminResponseDTO)
+                .adminResponseDTO(adminResponseDTO)
                 .categoryResponseDTO(categoryResponseDTO)
                 .tagResponseDTOs(tagResponseDTOs)
                 .build();
-    }
-
-    public int getRemainingCapacity() {
-        return this.capacity - this.attendees.size();
     }
 }
