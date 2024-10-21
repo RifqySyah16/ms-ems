@@ -22,6 +22,7 @@ import com.devland.assignment.ms_ems.admin.model.dto.AdminResponseDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/admins")
+@CrossOrigin(maxAge = 3600)
 public class AdminController {
     private final AdminService adminService;
     private final AuthenticationManager authenticationManager;
